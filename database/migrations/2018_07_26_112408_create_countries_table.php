@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ProposalSystem extends Migration
+class CreateCountriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class ProposalSystem extends Migration
      */
     public function up()
     {
-        Schema::create('country',function(Blueprint $table){
-		$table->increments('id');
-		$table->string('country_name');
-		$table->string('description');
-		});
+        Schema::create('Countries', function (Blueprint $table) {
+            $table->increments('id');
+	    $table->string('name');
+            $table->string('description');//Description of table
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,6 +28,6 @@ class ProposalSystem extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('Countries');
     }
 }
